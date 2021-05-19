@@ -6,9 +6,9 @@ def encode(cypher_text, image_file):
     binary_idx = 0
     binary_string = ''.join(format(ord(char), '08b') for char in cypher_text)
     img = Image.open(image_file).convert('RGB')
-    img_array = np.array(img, dtype='uint8') #ngambil array rgb, unsigned integer
+    img_array = np.array(img, dtype='uint8')
     img.close()
-    img_list = img_array.tolist() #dari numpy array jadi list biar bisa diedit seenak jidat leo
+    img_list = img_array.tolist()
     rows = []
     for row in img_list:
         columns = []
@@ -50,23 +50,3 @@ def decode(filename):
                     else:
                         decoded_text += ' '
                         null_checker = ''
-
-
-if __name__ == "__main__":
-    print("What do you want to do?")
-    print("1. Encode an Image")
-    print("2. Decode an Image")
-    choose = input("Select your choice [1-2] = ")
-    if choose == '1':
-        encode()
-    elif choose == '2':
-        binary_decode = decode().split()
-        binary_string = ''
-        for char in binary_decode:
-            binary_string += chr(int(char, 2))
-        print("Decode done! The hidden text is saved to image/hidden_message.txt")
-        with open("image/hidden_message.txt", 'w+') as file:
-            file.write(binary_string)
-    else:
-        print("Wrong Choose!")
-

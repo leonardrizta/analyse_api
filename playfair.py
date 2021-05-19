@@ -103,22 +103,3 @@ def decrypt(ciphertext, key):
             plaintext += table[row_char2 * 7 + col_char1]
 
     return plaintext
-
-if __name__ == '__main__':
-    print("Playfair Cipher")
-    pilih = input("Choose :\n1) Encrypting \n2) Decrypting\n")
-
-    if pilih == "1":
-        message = "l3o im00etz bgtz cl4lu cl4many4 pt2"
-        key = "leo"
-        print("\nEncrypting...\n" + "Plaintext: " + message)
-        print("Ciphertext: " + encrypt(message, key))
-    elif pilih == "2":
-        key = "leo"
-        cipher = "DWAHN935BQ1AKQ2AF!CPDE9FDIW6QU3Y"
-        print("\nDecrypting: \n" + "Cipher: " + cipher)
-        print(decrypt(cipher, key))
-        with open("decrypt.txt", 'w+') as file:
-            file.write(decrypt(cipher, key))
-    else:
-        print("Error")

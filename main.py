@@ -26,8 +26,12 @@ def encrypt_image():
         resp = jsonify({'message': 'No image in the request'})
         resp.status_code = 400
         return resp
-    if 'text' not in request.form:
-        resp = jsonify({'message': 'No text in the request'})
+    if 'plain_text' not in request.form:
+        resp = jsonify({'message': 'No plain text in the request'})
+        resp.status_code = 400
+        return resp
+    if 'key' not in request.form:
+        resp = jsonify({'message': 'No key in the request'})
         resp.status_code = 400
         return resp
     files = request.files.getlist('file')
@@ -39,7 +43,7 @@ def encrypt_image():
             success = True
         else:
             errors["message"] = 'File type of {} is not allowed'.format(file.filename)
-    cypher_text = encrypt("l3o im00etz bgtz cl4lu cl4many4 pt2", "leo")
+    cypher_text = encrypt(request.form.get('plain_text'), request.form.get('key'))
     image_file = UPLOAD_FOLDER + filename
     encode(cypher_text, image_file)
     if success:
@@ -52,14 +56,14 @@ def encrypt_image():
 
 @app.route('/decrypt', methods=['POST'])
 def decrypt_image():
-    # if 'file' not in request.files:
-    #     resp = jsonify({'cypher_text': playfair.encrypt("l3o im00etz bgtz cl4lu cl4many4 pt2", "leo")})
-    #     resp.status_code = 400
-    #     return resp
-    # if 'text' not in request.form:
-    #     resp = jsonify({'message': 'No text in the request'})
-    #     resp.status_code = 400
-    #     return resp
+    if 'file' not in request.files:
+        resp = jsonify({'message': 'No image in the request'})
+        resp.status_code = 400
+        return resp
+    if 'key' not in request.form:
+        resp = jsonify({'message': 'No key in the request'})
+        resp.status_code = 400
+        return resp
     files = request.files.getlist('file')
     filename = "decrypted_image.png"
     errors = {}
