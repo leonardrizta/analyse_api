@@ -47,7 +47,9 @@ def encrypt_image():
     image_file = UPLOAD_FOLDER + filename
     encode(cypher_text, image_file)
     if success:
-        return send_file(UPLOAD_FOLDER + filename, mimetype='image/jpg')
+        resp = jsonify({'endpoint': '/getimage'})
+        resp.status_code = 200
+        return resp
     else:
         resp = jsonify(errors)
         resp.status_code = 400
