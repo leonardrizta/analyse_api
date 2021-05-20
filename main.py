@@ -90,5 +90,9 @@ def decrypt_image():
         return resp
 
 
+@app.route('/getimage', methods=['GET'])
+def get_image():
+    return send_file(UPLOAD_FOLDER + "encrypted_image.png", mimetype='image/jpg')
+
 if __name__ == '__main__':
     app.run(debug=True)
