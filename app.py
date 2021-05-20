@@ -40,6 +40,7 @@ def encrypt_image():
     success = False
     for file in files:
         if file and allowed_file(file.filename):
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             success = True
         else:
             errors["message"] = 'File type of {} is not allowed'.format(file.filename)
@@ -47,7 +48,7 @@ def encrypt_image():
     image_file = UPLOAD_FOLDER + filename
     encode(cypher_text, image_file)
     if success:
-        resp = jsonify({'endpoint': '/getimage'})
+        resp = jsonify({'endpoint': 'getimage'})
         resp.status_code = 200
         return resp
     else:
@@ -81,7 +82,7 @@ def decrypt_image():
     cypher_text = ''
     for char in binary_decode:
         cypher_text += chr(int(char, 2))
-    plain_text = decrypt(cypher_text, "leo")
+    plain_text = decrypt(cypher_text, request.form.get('key'))
     if success:
         resp = jsonify({'plain_text': plain_text})
         resp.status_code = 200
