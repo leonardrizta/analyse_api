@@ -39,7 +39,7 @@ def preprocessor_input(dirty):
 
 def generate_table(key):
     # gapake J
-    alphabet = "ABCDEFGHIKLMNOPQRSTUVWXYZ1234567890!@#$%^&*(){}[]"
+    alphabet = "ABCDEFGHIKLMNOPQRSTUVWXYZ1234567890!@#$%^&*(),.?:" # ganti bracket jadi simbol lain yang lebih kepake
     table = []  # ALAN GANESHA SEPULUH
 
     # masukin char ke table, cuma pake huruf pertama klo ada duplikat
