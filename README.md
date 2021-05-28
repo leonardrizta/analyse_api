@@ -6,6 +6,7 @@ Menggunakan Algoritma Playfair Cipher.
 ## Project Description
 
 Aplikasi ini dibuat menggunakan Flutter sebagai frontend dan Flask sebagai backend dari aplikasinya.
+Repo ini merupakan repository dari Flask sebagai backend dari aplikasinya.
 
 ## Built With Love By:
 
@@ -13,4 +14,4 @@ Aplikasi ini dibuat menggunakan Flutter sebagai frontend dan Flask sebagai backe
 * [118140077 Muhammad Tyaz Gagaman](https://github.com/tyaz118140077)
 * [118140083 Ahmad Agung Zefi Syahputra](https://github.com/ahmadagungzs)
 * [118140084 Nazla Andintya Wijaya](https://github.com/nazla118140084)
-* [Siraz Tri Denira](https://github.com/deniraz)
+* [118140100 Siraz Tri Denira](https://github.com/deniraz)
